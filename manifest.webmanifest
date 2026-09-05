@@ -1,0 +1,10 @@
+{
+  "name": "Tilwa — Kur'an Arapçası",
+  "short_name": "Tilwa",
+  "description": "Elif Bâ'dan anlayarak Kur'an okumaya.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#f4f1e8",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
