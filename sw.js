@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v125-offline-audio-packs'
+const CACHE = 'tilwa-v126-quran-reader'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
@@ -17,7 +17,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return
   const url = new URL(event.request.url)
   if (url.origin !== self.location.origin || /^\/api\//.test(url.pathname) || /(?:auth|oauth|callback|account|checkout|billing|subscription|entitlement|portal)/i.test(url.pathname)) return
-  const cacheable = event.request.mode === 'navigate' || ['script', 'style', 'image', 'font', 'audio', 'manifest'].includes(event.request.destination) || [scoped('offline-audio-files.json'), scoped('exercise-library.json')].includes(url.pathname)
+  const cacheable = event.request.mode === 'navigate' || ['script', 'style', 'image', 'font', 'audio', 'manifest'].includes(event.request.destination) || [scoped('offline-audio-files.json'), scoped('exercise-library.json')].includes(url.pathname) || url.pathname.startsWith(scoped('quran-reader/'))
   if (!cacheable) return
   event.respondWith((async () => {
     const cached = await caches.match(event.request)
