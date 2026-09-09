@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v133-quran-word-journey'
+const CACHE = 'tilwa-v134-prayer-word-roots'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
