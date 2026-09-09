@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v129-refresh-open-prayer-content'
+const CACHE = 'tilwa-v130-prayer-record-selection'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
