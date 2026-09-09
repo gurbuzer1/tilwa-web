@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v127-root-explorer-without-masdar'
+const CACHE = 'tilwa-v128-complete-prayer-content'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
