@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v128-complete-prayer-content'
+const CACHE = 'tilwa-v129-refresh-open-prayer-content'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
@@ -10,8 +10,14 @@ self.addEventListener('install', (event) => event.waitUntil((async () => {
 })()))
 self.addEventListener('activate', (event) => event.waitUntil((async () => {
   const keys = await caches.keys()
-  await Promise.all(keys.filter((key) => (key.startsWith('ayet-') || key.startsWith('tilwa-')) && ![CACHE, AUDIO_CACHE].includes(key)).map((key) => caches.delete(key)))
+  const staleShells = keys.filter((key) => (key.startsWith('ayet-') || key.startsWith('tilwa-')) && ![CACHE, AUDIO_CACHE].includes(key))
+  await Promise.all(staleShells.map((key) => caches.delete(key)))
   await self.clients.claim()
+  if (staleShells.length) {
+    const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true })
+    const scopedWindows = windows.filter((client) => client.url.startsWith(self.registration.scope))
+    await Promise.all(scopedWindows.map((client) => client.navigate(client.url)))
+  }
 })()))
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return
