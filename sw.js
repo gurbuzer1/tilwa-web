@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v134-prayer-word-roots'
+const CACHE = 'tilwa-v135-reload-prayer-word-roots'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
@@ -16,7 +16,11 @@ self.addEventListener('activate', (event) => event.waitUntil((async () => {
   if (staleShells.length) {
     const windows = await self.clients.matchAll({ type: 'window', includeUncontrolled: true })
     const scopedWindows = windows.filter((client) => client.url.startsWith(self.registration.scope))
-    await Promise.all(scopedWindows.map((client) => client.navigate(client.url)))
+    await Promise.all(scopedWindows.map((client) => {
+      const target = new URL(client.url)
+      target.searchParams.set('app-shell', CACHE)
+      return client.navigate(target.href)
+    }))
   }
 })()))
 self.addEventListener('fetch', (event) => {
