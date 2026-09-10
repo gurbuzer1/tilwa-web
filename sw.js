@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v143-word-card-journeys'
+const CACHE = 'tilwa-v144-complete-stage-word-cards'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
