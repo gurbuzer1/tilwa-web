@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v140-kevser-guide-without-example'
+const CACHE = 'tilwa-v141-kevser-word-library-link'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
