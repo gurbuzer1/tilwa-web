@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v146-vocabulary-search-keyboards'
+const CACHE = 'tilwa-v147-remove-high-utility-word-units'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
