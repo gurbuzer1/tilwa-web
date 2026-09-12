@@ -1,4 +1,4 @@
-const CACHE = 'tilwa-v147-remove-high-utility-word-units'
+const CACHE = 'tilwa-v150-turkish-word-readings'
 const AUDIO_CACHE = 'tilwa-audio-v1'
 const SCOPE = new URL('./', self.registration.scope)
 const scoped = (path = '') => new URL(path.replace(/^\//, ''), SCOPE).pathname
